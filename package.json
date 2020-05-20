@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "up": "ng build && echo text.tarsis.cc > dist/CNAME && surge dist/"
   },
   "private": true,
   "dependencies": {
