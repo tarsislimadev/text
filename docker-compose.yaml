@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   app:
     image: 'tmvdl/projects:text'
     build: './src/app'
@@ -8,4 +9,3 @@ services:
       - './src/app:/app'
     ports:
       - '4200:80'
-
