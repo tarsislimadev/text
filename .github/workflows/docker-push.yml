@@ -10,6 +10,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+
       - name: Check out
         uses: actions/checkout@v2
 
@@ -20,7 +21,7 @@ jobs:
           password: ${{ secrets.GITHUBDOCKER }}
 
       - name: Docker build
-        run: docker-compose build www
+        run: docker-compose build
 
       - name: Docker push
         run: docker push tmvdl/projects -a
