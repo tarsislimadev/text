@@ -1,13 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Text</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
-  <app-root></app-root>
+  <textarea id="text" autofocus></textarea>
+
+  <p>Letters: <span id="letters"></span></p>
+  <p>All: <span id="all"></span></p>
+  <p>Without \n: <span id="without"></span></p>
+  <p>Chars: <span id="chars"></span></p>
+  <p>Reverse: <span id="reverse"></span></p>
+
+  <script type="module">
+    const text = document.getElementById('text');
+    const lettersEl = document.getElementById('letters');
+    const allEl = document.getElementById('all');
+    const withoutEl = document.getElementById('without');
+    const charsEl = document.getElementById('chars');
+    const reverseEl = document.getElementById('reverse');
+
+    text.addEventListener('input', function () {
+      lettersEl.textContent = letters.call(this);
+      allEl.textContent = all.call(this);
+      withoutEl.textContent = without.call(this);
+      charsEl.textContent = chars.call(this);
+      reverseEl.textContent = reverse.call(this);
+    });
+
+    function all() {
+      return text.textContent.length;
+    }
+
+    function letters() {
+      return text.textContent.replace(' ', '').split('').length;
+    }
+
+    function without() {
+      return text.textContent.replace(/\n|\r/g, '').split('').length;
+    }
+
+    function chars() {
+      let _return = text.textContent.split('').reduce(function (chars, char) {
+        if (!chars[char])
+          chars[char] = 1;
+        else
+          chars[char]++;
+
+        return chars;
+      }, {});
+
+      return JSON.stringify(_return);
+    }
+
+    function reverse() {
+      return text.textContent.split('').reverse().join('');
+    }
+  </script>
+
 </body>
+
 </html>

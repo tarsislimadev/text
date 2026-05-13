@@ -1,7 +1,3 @@
-FROM tmvdl/node:angular
+FROM nginx:alpine
 
-WORKDIR /app
-
-COPY . .
-
-CMD npm start
+COPY ./ /usr/share/nginx/html/
